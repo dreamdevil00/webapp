@@ -1,0 +1,4 @@
+{
+  "nodeEnv": "development",
+  "apiBaseUrl": "api/v1"
+}

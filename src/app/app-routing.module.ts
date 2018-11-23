@@ -1,6 +1,5 @@
-import { PageNotFoundComponent } from '@/components/page-not-found.component';
+import { PageNotFoundComponent } from '@/shared/components';
 import { LayoutFullComponent } from '@/layout/full/layout-full.component';
-import { LayoutSimpleComponent } from '@/layout';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -26,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

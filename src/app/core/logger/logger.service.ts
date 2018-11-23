@@ -10,4 +10,8 @@ export class LoggerService {
   error(...args) {
     console.error(...args);
   }
+
+  warn(...args) {
+    console.warn(...args);
+  }
 }

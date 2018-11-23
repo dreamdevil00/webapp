@@ -9,25 +9,28 @@ registerLocaleData(zh);
 
 import { AppRoutingModule } from '@/app-routing.module';
 import { AppComponent } from '@/app.component';
-import { PageNotFoundComponent } from '@/components/page-not-found.component';
 
 import { CoreModule } from '@/core';
 import { SharedModule } from '@/shared';
 import { LayoutModule } from '@/layout';
 import { AuthModule } from '@/auth';
+import { StorageModule } from '@/storage';
 
-import { AppConfigService } from '@/app-config.service';
+import { StartupService } from './startup.service';
+import { AppConfigService } from './app-config.service';
+import { AppService } from './app.service';
 import { Router } from '@angular/router';
 
-const appConfigFactory = (srv: AppConfigService) => {
+export const startupFactory = (srv: StartupService) => {
   return () => srv.load();
 };
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    SharedModule,
+    SharedModule.forRoot(),
+    StorageModule.forRoot(),
     CoreModule,
     LayoutModule,
     HttpClientModule,
@@ -36,12 +39,15 @@ const appConfigFactory = (srv: AppConfigService) => {
     AppRoutingModule
   ],
   providers: [
-    /*
+    StartupService,
+    AppConfigService,
+    AppService,
     {
       provide: APP_INITIALIZER,
       multi: true,
-      useFactory: appConfigFactory
-    }, */
+      useFactory: startupFactory,
+      deps: [StartupService]
+    },
     {
       provide: NZ_I18N,
       useValue: zh_CN
@@ -51,6 +57,6 @@ const appConfigFactory = (srv: AppConfigService) => {
 })
 export class AppModule {
   constructor(router: Router) {
-    console.log(router.config);
+    // console.log(router.config);
   }
 }
