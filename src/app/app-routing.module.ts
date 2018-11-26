@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: 'users',
-        loadChildren: '@/user/user.module#UserModule'
+        loadChildren: './user/user.module#UserModule'
       }
     ]
   },

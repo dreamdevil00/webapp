@@ -5,7 +5,17 @@
     "component-selector": [
       true,
       "element",
-      ["app", "ui", "layout", "user", "auth", "page"],
+      [
+        "app",
+        "ui",
+        "layout",
+        "user",
+        "auth",
+        "page",
+        "acl",
+        "settings",
+        "role"
+      ],
       "kebab-case"
     ]
   }
